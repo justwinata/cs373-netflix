@@ -1,25 +1,17 @@
 #!/usr/bin/env python3
 
-# ------------------------------
-# projects/collatz/RunCollatz.py
-# Copyright (C) 2015
-# Glenn P. Downing
-# ------------------------------
-
 # -------
 # imports
 # -------
 
 import sys
 
-from Netflix import collatz_solve
-
 # ----
 # main
 # ----
 
 if __name__ == "__main__" :
-    collatz_solve(sys.stdin, sys.stdout)
+    print (1)
 
 """
 % cat RunCollatz.in

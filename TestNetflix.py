@@ -1,31 +1,21 @@
 #!/usr/bin/env python3
 
-# -------------------------------
-# projects/collatz/TestCollatz.py
-# Copyright (C) 2015
-# Glenn P. Downing
-# -------------------------------
-
-# https://docs.python.org/3.4/reference/simple_stmts.html#grammar-token-assert_stmt
-
 # -------
 # imports
 # -------
 
-from io       import StringIO
-from unittest import main, TestCase
-
-from Collatz import collatz_read, collatz_eval, collatz_print, collatz_solve
+#from io       import StringIO
+#from unittest import main, TestCase
 
 # -----------
 # TestCollatz
 # -----------
 
-class TestCollatz (TestCase) :
+class TestNetflix (TestCase) :
     # ----
     # read
     # ----
-
+'''
     def test_read_1 (self) :
         s    = "1 10\n"
         i, j = collatz_read(s)
@@ -96,7 +86,7 @@ class TestCollatz (TestCase) :
         w = StringIO()
         collatz_solve(r, w)
         self.assertEqual(w.getvalue(), "1 10 20\n100 200 125\n201 210 89\n900 1000 174\n")
-
+'''
 # ----
 # main
 # ----
