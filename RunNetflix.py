@@ -12,7 +12,7 @@
 
 import sys
 
-from Collatz import collatz_solve
+from Netflix import collatz_solve
 
 # ----
 # main
