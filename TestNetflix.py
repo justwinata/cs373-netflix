@@ -4,9 +4,10 @@
 # imports
 # -------
 
-#from io       import StringIO
-#from unittest import main, TestCase
-
+from io       import StringIO
+from unittest import main, TestCase
+from Netflix import *
+import math
 # -----------
 # TestCollatz
 # -----------
