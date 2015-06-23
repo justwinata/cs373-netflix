@@ -4,36 +4,21 @@ import io
 from math import sqrt
 import json
 from pprint import pprint
+from urllib.request import urlopen
 
+urlamr = urlopen("http://www.cs.utexas.edu/~ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json")
+urlavr = urlopen("http://www.cs.utexas.edu/~ebanner/netflix-tests/ezo55-Average_Viewer_Rating_Cache.json")
+urlpps = urlopen("http://www.cs.utexas.edu/~ebanner/netflix-tests/pam2599-probe_solutions.json")
 
-path_average_movie_rating = "/u/ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json"
-path_average_viewer_rating = "/u/ebanner/netflix-tests/ezo55-Average_Viewer_Rating_Cache.json"
-path_probe_solutions = "/u/ebanner/netflix-tests/pam2599-probe_solutions.json"
+average_m_cache = json.loads(urlamr.read().decode(urlamr.info().get_param('charset') or 'utf-8'))
+average_v_cache = json.loads(urlavr.read().decode(urlavr.info().get_param('charset') or 'utf-8'))
+prob_sol_cache = json.loads(urlpps.read().decode(urlpps.info().get_param('charset') or 'utf-8'))
 
-mrating = open(path_average_movie_rating,'r')
-vrating = open(path_average_viewer_rating, 'r')
-probe_solutions = open(path_probe_solutions, 'r')
-
-average_m_cache = json.loads(mrating.read())
-average_v_cache = json.loads(vrating.read())
-prob_sol_cache = json.loads(probe_solutions.read())
-
-#print (str(average_v_cache["1585790"]))
 global ourpredictions
 ourpredictions = []
 
 global actualpredictions
 actualpredictions = []
-
-"""
-print (float(prob_sol_cache["1"]["30878"]))
-actualpredictions.append(float(prob_sol_cache["4446"]["1657689"]))
-print (*actualpredictions)
-"""
-def netflix_end():
-	mrating.close()
-	vrating.close()
-	probe_solutions.close()
 
 def netflix_read(r):
 	"""
@@ -49,14 +34,10 @@ def netflix_predict(m_id, customer_id,w,totalavg):
 	predict = (average_m_cache[m_id] + average_v_cache[customer_id]) - totalavg
 	ourpredictions.append(float(predict))
 	actualpredictions.append(float(prob_sol_cache[m_id][customer_id]))
-	#print(*ourpredictions)
 	netflix_print(str(round(predict,1)),w)
 			
-
-
 def netflix_print(s,w):
 	w.write(""+s + "\n")
-
 
 def netflix_solve(r,w):
 	"""
@@ -86,11 +67,9 @@ def netflix_solve(r,w):
 			z = zip(ourpredictions,actualpredictions)
 			v = sum((x-y) ** 2 for x, y in z)
 			rmse = sqrt(v/len(ourpredictions))	
-			w.write("RSME: " + str(round(rmse,2)))
+			w.write("RMSE: " + str(round(rmse,2)))
 		elif s[-1] == ':':
 			movie_id = s[:-1]
 			netflix_print(s,w)
 		else:
 			netflix_predict(movie_id,s,w,totalavg)
-	
-	netflix_end()	

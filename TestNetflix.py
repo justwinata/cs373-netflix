@@ -24,16 +24,33 @@ class TestNetflix (TestCase) :
         self.assertEqual("1:",result) 
 
     '''  
-    # ----
-    # solve
-    # ----
+    # -----
+    # predict
+    # -----
 
+    # -----
+    # print
+    # -----
+
+    def test_print_1 (self) :
+        w = StringIO()
+        netflix_print("1:", w)
+        self.assertEqual(w.getvalue(), "1:\n")
+
+    def test_print_1 (self) :
+        w = StringIO()
+        netflix_print("54816", w)
+        self.assertEqual(w.getvalue(), "54816\n")
+
+    # -----
+    # solve
+    # -----
     
     def test_solve (self):
-        r = StringIO("1:\n30878")
+        r = StringIO("10088:\n2594473\n2181764\n1982763\n1875632\n2302111\n")
         w = StringIO()
         netflix_solve(r, w)
-        self.assertEqual(w.getvalue(), "1:\n")
+        self.assertEqual(w.getvalue(), "10088:\n3.8\n3.8\n3.3\n4.3\n3.4\nRMSE: 1.15")
     
 
 # ----
