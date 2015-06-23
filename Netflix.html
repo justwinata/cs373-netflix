@@ -26,8 +26,16 @@
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-netflix_predict"><strong>netflix_predict</strong></a>(m_id, customer_id, w, totalavg)</dt></dl>
- <dl><dt><a name="-netflix_print"><strong>netflix_print</strong></a>(s, w)</dt></dl>
+<td width="100%"><dl><dt><a name="-netflix_predict"><strong>netflix_predict</strong></a>(m_id, customer_id, w, totalavg)</dt><dd><tt>m_id&nbsp;is&nbsp;a&nbsp;dicitonary&nbsp;key&nbsp;for&nbsp;average_m_cache<br>
+customer_id&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;key&nbsp;for&nbsp;average_v_cache<br>
+w&nbsp;is&nbsp;a&nbsp;writer<br>
+totalavg&nbsp;is&nbsp;the&nbsp;total&nbsp;average&nbsp;of&nbsp;the&nbsp;viewers'&nbsp;ratings<br>
+Takes&nbsp;total&nbsp;average&nbsp;of&nbsp;the&nbsp;viewers'&nbsp;ratings&nbsp;<br>
+and&nbsp;subtracts&nbsp;it&nbsp;from&nbsp;<br>
+the&nbsp;sum&nbsp;of&nbsp;the&nbsp;average&nbsp;movie&nbsp;ratings&nbsp;for&nbsp;the&nbsp;input&nbsp;movie&nbsp;<br>
+and&nbsp;the&nbsp;average&nbsp;ratings&nbsp;for&nbsp;the&nbsp;input&nbsp;customer</tt></dd></dl>
+ <dl><dt><a name="-netflix_print"><strong>netflix_print</strong></a>(s, w)</dt><dd><tt>s&nbsp;is&nbsp;a&nbsp;string<br>
+w&nbsp;is&nbsp;a&nbsp;writer</tt></dd></dl>
  <dl><dt><a name="-netflix_read"><strong>netflix_read</strong></a>(r)</dt><dd><tt>r&nbsp;is&nbsp;a&nbsp;reader<br>
 .strip()&nbsp;removes&nbsp;all&nbsp;whitespace&nbsp;at&nbsp;the&nbsp;start&nbsp;and&nbsp;end,&nbsp;<br>
 including&nbsp;spaces,&nbsp;tabs,&nbsp;newlines&nbsp;and&nbsp;carriage&nbsp;returns.</tt></dd></dl>

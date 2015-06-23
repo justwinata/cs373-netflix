@@ -29,6 +29,16 @@ def netflix_read(r):
 	return s
 
 def netflix_predict(m_id, customer_id,w,totalavg):
+	"""
+	m_id is a dicitonary key for average_m_cache
+	customer_id is a dictionary key for average_v_cache
+	w is a writer
+	totalavg is the total average of the viewers' ratings
+	Takes total average of the viewers' ratings 
+	and subtracts it from 
+	the sum of the average movie ratings for the input movie 
+	and the average ratings for the input customer
+	"""
 	predict = 0
 	predict = (average_m_cache[m_id] + average_v_cache[customer_id]) - totalavg
 	ourpredictions.append(float(predict))
@@ -36,6 +46,10 @@ def netflix_predict(m_id, customer_id,w,totalavg):
 	netflix_print(str(round(predict,1)),w)
 			
 def netflix_print(s,w):
+	"""
+	s is a string
+	w is a writer
+	"""
 	w.write(""+s + "\n")
 
 def netflix_solve(r,w):
