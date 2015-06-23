@@ -4,7 +4,7 @@
 # imports
 # -------
 
-from io       import StringIO
+from io import StringIO
 from unittest import main, TestCase
 from Netflix import *
 import math
@@ -17,13 +17,20 @@ class TestNetflix (TestCase) :
     # ----
     # read
     # ----
-
+    def test_read (self) :
+            r = StringIO("4545")
+            result = netflix_read(r)
+            self.assertEqual("4545",result)
 # ----
 # main
 # ----
 
-if __name__ == "__main__" :
-    main()
+
+
+
+
+    if __name__ == "__main__" :
+        main()
 
 """
 % coverage3 run --branch TestNetflix.py >  TestNetflix.out 2>&1
