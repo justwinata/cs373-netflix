@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-import numpy
 import io
-import math
+from math import sqrt
 import json
 from pprint import pprint
 
@@ -20,7 +19,17 @@ average_v_cache = json.loads(vrating.read())
 prob_sol_cache = json.loads(probe_solutions.read())
 
 #print (str(average_v_cache["1585790"]))
+global ourpredictions
+ourpredictions = []
 
+global actualpredictions
+actualpredictions = []
+
+"""
+print (float(prob_sol_cache["1"]["30878"]))
+actualpredictions.append(float(prob_sol_cache["4446"]["1657689"]))
+print (*actualpredictions)
+"""
 def netflix_end():
 	mrating.close()
 	vrating.close()
@@ -35,12 +44,18 @@ def netflix_read(r):
 	s = r.readline().strip()
 	return s
 
-def netflix_predict():
-	return 0		
+def netflix_predict(m_id, customer_id,w,totalavg):
+	predict = 0
+	predict = (average_m_cache[m_id] + average_v_cache[customer_id]) - totalavg
+	ourpredictions.append(float(predict))
+	actualpredictions.append(float(prob_sol_cache[m_id][customer_id]))
+	#print(*ourpredictions)
+	netflix_print(str(round(predict,1)),w)
+			
 
 
 def netflix_print(s,w):
-	w.write(s + "\n")
+	w.write(""+s + "\n")
 
 
 
@@ -52,15 +67,32 @@ def netflix_solve(r,w):
     """
 	movie_id = "-1"
 	processing = True 
+	rmse =0
+	avg = 0
+
+	"""
+	totalavg calculated with:
+
+	for v in average_v_cache:
+		avg += average_v_cache[v]
+
+	totalavg = avg/len(average_v_cache)	
+	print (totalavg)
+	"""
+	totalavg = 3.674130451108032
 
 	while(processing):
 		s = netflix_read(r)
 		if s =='':
 			processing = False
-			netflix_print("RSME " + "blah",w)
+			z = zip(ourpredictions,actualpredictions)
+			v = sum((x-y) ** 2 for x, y in z)
+			rmse = sqrt(v/len(ourpredictions))	
+			w.write("RSME: " + str(round(rmse,2)))
 		elif s[-1] == ':':
 			movie_id = s[:-1]
-				
+			netflix_print(s,w)
 		else:
-			print (s)
-			
+			netflix_predict(movie_id,s,w,totalavg)
+	
+	netflix_end()	

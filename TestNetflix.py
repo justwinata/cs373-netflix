@@ -30,11 +30,12 @@ class TestNetflix (TestCase) :
 
     
     def test_solve (self):
-        r = StringIO("1:\n23\n78\n")
+        r = StringIO("1:\n30878")
         w = StringIO()
         netflix_solve(r, w)
-        self.assertEqual(w.getvalue(), "1:")
-            
+        self.assertEqual(w.getvalue(), "1:\n")
+    
+
 # ----
 # main
 # ----
