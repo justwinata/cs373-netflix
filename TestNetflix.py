@@ -115,13 +115,13 @@ if __name__ == "__main__" :
 % cat TestNetflix.out
 .......
 ----------------------------------------------------------------------
-Ran 7 tests in 0.001s
+Ran 12 tests in 0.001s
 
 OK
 Name          Stmts   Miss Branch BrMiss  Cover   Missing
 ---------------------------------------------------------
-Collatz          18      0      6      0   100%
-TestNetflix      33      1      2      1    94%   79
+Netflix          18      0      6      0   100%
+TestNetflix      33      1      2      1    97%   106
 ---------------------------------------------------------
-TOTAL            51      1      8      1    97%
+TOTAL            106     1      10     1    98%
 """
