@@ -17,20 +17,30 @@ class TestNetflix (TestCase) :
     # ----
     # read
     # ----
-    def test_read (self) :
-            r = StringIO("4545")
-            result = netflix_read(r)
-            self.assertEqual("4545",result)
+    '''
+    def test_read_1 (self) :
+        r = StringIO("1:\nhybhydsbu\n990\n")
+        result=netflix_read(r)
+        self.assertEqual("1:",result) 
+
+    '''  
+    # ----
+    # solve
+    # ----
+
+    
+    def test_solve (self):
+        r = StringIO("1:\n23\n78\n")
+        w = StringIO()
+        netflix_solve(r, w)
+        self.assertEqual(w.getvalue(), "1:")
+            
 # ----
 # main
 # ----
 
-
-
-
-
-    if __name__ == "__main__" :
-        main()
+if __name__ == "__main__" :
+    main()
 
 """
 % coverage3 run --branch TestNetflix.py >  TestNetflix.out 2>&1

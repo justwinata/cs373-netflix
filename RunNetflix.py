@@ -6,15 +6,16 @@
 
 import sys
 
+from Netflix import netflix_solve
 # ----
 # main
 # ----
 
 if __name__ == "__main__" :
-    print (1)
+    netflix_solve(sys.stdin, sys.stdout)
 
 """
-% cat RunCollatz.in
+% cat RunNetflix.in
 1 10
 100 200
 201 210
@@ -22,11 +23,11 @@ if __name__ == "__main__" :
 
 
 
-% RunCollatz.py < RunCollatz.in > RunCollatz.out
+% RunNetflix.py < RunNetflix.in > RunNetflix.out
 
 
 
-% cat RunCollatz.out
+% cat RunNetflix.out
 1 10 1
 100 200 1
 201 210 1
@@ -34,6 +35,6 @@ if __name__ == "__main__" :
 
 
 
-% pydoc3 -w Collatz
-# That creates the file Collatz.html
+% pydoc3 -w Netflix
+# That creates the file Netflix.html
 """
