@@ -3,7 +3,6 @@
 import io
 from math import sqrt
 import json
-from pprint import pprint
 from urllib.request import urlopen
 
 urlamr = urlopen("http://www.cs.utexas.edu/~ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json")
