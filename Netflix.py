@@ -58,8 +58,6 @@ def netflix_print(s,w):
 	w.write(""+s + "\n")
 
 
-
-
 def netflix_solve(r,w):
 	"""
     r a reader
